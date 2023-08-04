@@ -164,4 +164,29 @@ public class DbRepository {
         List<Student> result = jdbcTemplate.query(sql,rm);
         return result;
     }
+
+    public void updateStudentAddress(String studentId, String address){
+
+        String sql = "update student set address=:sAddress \n" +
+                "\t\t\t   where id=:studentId";
+
+        HashMap<String, Object> hMap = new HashMap<>();
+
+        hMap.put("sAddress", address);
+        hMap.put("studentId", studentId);
+
+        int result = namedParameterJdbcTemplate.update(sql,hMap);
+
+
+    }
+
+    public void deleteStudent(String studentId){
+        String sql = "delete from student where id = :id";
+        HashMap<String, Object>hMap = new HashMap<>();
+
+        hMap.put("id", studentId);
+
+        int result = namedParameterJdbcTemplate.update(sql, hMap);
+    }
+
 }

@@ -37,4 +37,12 @@ public class StudentService {
     public List<Student> getAllRegisteredStudents() {
         return dbRepository.getAllRegisteredStudents();
     }
+
+    public void updateStudentAddress(String studentId, String address){
+        dbRepository.updateStudentAddress(studentId, address);
+    }
+
+    public void deleteStudent(String studentId){
+        dbRepository.deleteStudent(studentId);
+    }
 }

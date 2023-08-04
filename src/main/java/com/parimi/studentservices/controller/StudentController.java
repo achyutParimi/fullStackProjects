@@ -6,8 +6,11 @@ import com.parimi.studentservices.model.StudentRegisteredCourse;
 import com.parimi.studentservices.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
+
+@RequestMapping(path = "/v1")
 
 @RestController // Controller Class -
 public class StudentController {
@@ -51,5 +54,22 @@ public class StudentController {
             @RequestBody Student student
     ){
         studentService.registerStudent(student);
+    }
+
+    @PutMapping(path = "/student/{studentId}", consumes = "application/json")
+    public void updateStudentAddress(
+        @PathVariable String studentId,
+        @RequestBody String address
+    ){
+        studentService.updateStudentAddress(studentId, address);
+    }
+
+    @DeleteMapping(path="/student/{studentId}")
+    @ResponseStatus (HttpStatus.OK)
+    //@RequestMapping(value="/deleteStudent/{studentId}", method=RequestMethod.DELETE)
+    public void deleteStudent(
+        @PathVariable String studentId
+    ){
+        studentService.deleteStudent(studentId);
     }
 }
