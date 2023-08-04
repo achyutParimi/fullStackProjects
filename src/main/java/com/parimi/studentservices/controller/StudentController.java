@@ -34,6 +34,7 @@ public class StudentController {
     @GetMapping("/courses") // API Endpoint- which is mapped to GET Courses for a student
     public List<Course> getAllCourses(
     ){
+	System.out.println("GET API invoked");
         return studentService.getAllCourses();
     }
     @GetMapping("/students") // API Endpoint- which is mapped to GET Courses for a student
@@ -46,6 +47,7 @@ public class StudentController {
     public void addCourse(
             @RequestBody Course course
     ){
+	System.out.println("POST API invoked");
          studentService.addCourse(course);
     }
 
@@ -53,6 +55,7 @@ public class StudentController {
     public void registerStudent(
             @RequestBody Student student
     ){
+	System.out.println("POST API invoked");
         studentService.registerStudent(student);
     }
 
@@ -61,6 +64,7 @@ public class StudentController {
         @PathVariable String studentId,
         @RequestBody String address
     ){
+	System.out.println("PUT API invoked");
         studentService.updateStudentAddress(studentId, address);
     }
 
@@ -70,6 +74,8 @@ public class StudentController {
     public void deleteStudent(
         @PathVariable String studentId
     ){
+
+	System.out.println("Delete API invoked");
         studentService.deleteStudent(studentId);
     }
 }
